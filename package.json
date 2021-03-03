@@ -1,0 +1,22 @@
+{
+  "name": "ecommers_react_nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saket98/Ecommers_React_NodeJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saket98/Ecommers_React_NodeJS/issues"
+  },
+  "homepage": "https://github.com/saket98/Ecommers_React_NodeJS#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
