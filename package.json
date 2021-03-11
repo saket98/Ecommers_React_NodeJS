@@ -1,22 +1,28 @@
 {
-  "name": "ecommers_react_nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/saket98/Ecommers_React_NodeJS.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/saket98/Ecommers_React_NodeJS/issues"
-  },
-  "homepage": "https://github.com/saket98/Ecommers_React_NodeJS#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  }
+	"name": "ecommers_react_nodejs",
+	"type": "module",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"start": "node ./backend/server.js",
+		"dev": "nodemon --watch backend --exec ./backend/server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/saket98/Ecommers_React_NodeJS.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/saket98/Ecommers_React_NodeJS/issues"
+	},
+	"homepage": "https://github.com/saket98/Ecommers_React_NodeJS#readme",
+	"devDependencies": {
+		"nodemon": "^2.0.7"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"express": "^4.17.1"
+	},
+	"description": ""
 }
