@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Product from "../Components/Product";
 import LoadingBox from "../Components/LoadingBox";
 import MessageBox from "../Components/MessageBox";
-import axios from "axios";
 
 export default function HomeScreen() {
-	const [products, setProducts] = useState([]);
-	const [loading, setLoading] = useState([false]);
-	const [error, setError] = useState([false]);
 
+	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(false);
+	
 	useEffect(() => {
 		const fecthData = async () => {
 			try {
