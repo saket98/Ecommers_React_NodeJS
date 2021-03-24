@@ -18,6 +18,8 @@
 	},
 	"homepage": "https://github.com/saket98/Ecommers_React_NodeJS#readme",
 	"devDependencies": {
+		"eslint": "^7.22.0",
+		"eslint-plugin-react": "^7.23.1",
 		"nodemon": "^2.0.7"
 	},
 	"dependencies": {
