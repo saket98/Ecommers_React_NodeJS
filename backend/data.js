@@ -10,6 +10,7 @@ const data = {
 			rating: 4.5,
 			numReviews: 10,
 			description: "high quality product",
+			countInStock: 20,
 		},
 		{
 			_id: "2",
@@ -19,6 +20,7 @@ const data = {
 			price: 100,
 			brand: "Adidas",
 			rating: 4.0,
+			countInStock: 10,
 			numReviews: 10,
 			description: "high quality product",
 		},
@@ -32,6 +34,7 @@ const data = {
 			rating: 4.8,
 			numReviews: 17,
 			description: "high quality product",
+			countInStock: 5,
 		},
 		{
 			_id: "4",
