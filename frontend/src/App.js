@@ -2,6 +2,7 @@ import React from "react";
 import {Route, BrowserRouter } from "react-router-dom";
 import cartScreen from "./Screens/cartScreen";
 import HomeScreen from "./Screens/HomeScreen";
+import { Link } from "react-router-dom";
 import ProductScreen from "./Screens/ProductScreen";
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
 						</a>
 					</div>
 					<div>
-						<a href="/cart">Cart</a>
-						<a href="/signin">Sign In</a>
+						<Link to="/cart">Cart</Link>
+						<Link to="/signin">Sign In</Link>
 					</div>
 				</header>
 				<main>
