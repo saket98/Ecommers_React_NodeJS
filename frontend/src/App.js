@@ -1,11 +1,14 @@
 import React from "react";
-import {Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter } from "react-router-dom";
 import cartScreen from "./Screens/cartScreen";
 import HomeScreen from "./Screens/HomeScreen";
 import { Link } from "react-router-dom";
 import ProductScreen from "./Screens/ProductScreen";
+import { useSelector } from "react-redux";
 
 function App() {
+	const cart = useSelector((state) => state.cart);
+	const { cartItems } = cart;
 	return (
 		<BrowserRouter>
 			<div className="grid-container">
@@ -16,7 +19,10 @@ function App() {
 						</a>
 					</div>
 					<div>
-						<Link to="/cart">Cart</Link>
+						<Link to="/cart">
+							Cart
+							{cartItems.length > 0 && <span className="badge">{cartItems.length}</span>}
+						</Link>
 						<Link to="/signin">Sign In</Link>
 					</div>
 				</header>
