@@ -7,4 +7,4 @@ userRouter.get("/seed", async (res, req) => {
 	const createUser = await User.insertMany(data.users);
 });
 
-model.exports = userRouter;
+module.exports = userRouter;
