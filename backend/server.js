@@ -31,7 +31,7 @@ app.get("/api/products", (req, res) => {
 	res.send(data.products);
 });
 
-app.use("api/users", userRouter);
+app.use("/api/users", userRouter);
 
 const PORT = 5000;
 
