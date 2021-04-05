@@ -1,7 +1,22 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const { products } = require("./data");
-const app = express();
 const data = require("./data");
+const userRouter = require("./router/userRouter");
+
+const app = express();
+
+mongoose
+	.connect("mongodb://localhost:27017/Amazon", {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useFindAndModify: false,
+		useCreateIndex: true,
+	})
+	.then(() => {
+		console.log("mongodb connected.");
+	})
+	.catch((err) => console.log(err.message));
 
 app.get("/api/products/:id", (req, res) => {
 	const product = products.find((x) => x._id === req.params.id);
@@ -16,11 +31,7 @@ app.get("/api/products", (req, res) => {
 	res.send(data.products);
 });
 
-
-
-app.get("/", function (req, res) {
-	res.send("Hello World...!!!");
-});
+app.use("api/users", userRouter);
 
 const PORT = 5000;
 

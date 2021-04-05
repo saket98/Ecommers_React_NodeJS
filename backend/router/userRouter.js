@@ -1,7 +1,10 @@
 const express = require("express");
+const data = require("../data.js");
 
 const userRouter = express.Router();
 
-userRouter.get("/seed", async(res, req) => {
+userRouter.get("/seed", async (res, req) => {
+	const createUser = await User.insertMany(data.users);
+});
 
-})
+model.exports = userRouter;
