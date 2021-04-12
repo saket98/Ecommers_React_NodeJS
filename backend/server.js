@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { products } = require("./data");
 const data = require("./data");
+const productRouter = require("./router/productRouter");
 const userRouter = require("./router/userRouter");
 
 const app = express();
@@ -33,12 +34,13 @@ app.get("/api/products", (req, res) => {
 });
 
 app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
 
 app.use((err, req, res, next) => {
 	res.status(500).send({ message: err.message });
 });
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 	console.log(`Server running on http://localhost:${PORT}`);
