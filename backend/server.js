@@ -5,9 +5,10 @@ const data = require("./data");
 const userRouter = require("./router/userRouter");
 
 const app = express();
+require("dotenv").config();
 
 mongoose
-	.connect("mongodb://localhost:27017/Amazon", {
+	.connect(process.env.MONGO_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useFindAndModify: false,
@@ -32,6 +33,10 @@ app.get("/api/products", (req, res) => {
 });
 
 app.use("/api/users", userRouter);
+
+app.use((err, req, res, next) => {
+	res.status(500).send({ message: err.message });
+});
 
 const PORT = 5000;
 

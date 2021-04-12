@@ -18,6 +18,7 @@
 	},
 	"homepage": "https://github.com/saket98/Ecommers_React_NodeJS#readme",
 	"devDependencies": {
+		"dotenv": "^8.2.0",
 		"eslint": "^7.22.0",
 		"eslint-plugin-react": "^7.23.1",
 		"nodemon": "^2.0.7"
@@ -26,6 +27,7 @@
 		"bcrypt": "^5.0.1",
 		"body-parser": "^1.19.0",
 		"express": "^4.17.1",
+		"express-async-handler": "^1.1.4",
 		"mongoose": "^5.12.3"
 	},
 	"description": ""
