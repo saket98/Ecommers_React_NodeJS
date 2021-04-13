@@ -3,8 +3,17 @@ const data = require("../data.js");
 const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
+const generateToken = require("../util.js");
 
 const userRouter = express.Router();
+
+userRouter.get(
+	"/",
+	asyncHandler(async (req, res) => {
+		const user = await User.find({});
+		res.send({ user });
+	})
+);
 
 userRouter.get(
 	"/seed",
@@ -19,7 +28,8 @@ userRouter.post(
 	asyncHandler(async (req, res) => {
 		const user = await User.findOne({ email: req.body.email });
 		if (user) {
-			if (bcrypt.compareSync(req.body.password === user.password)) {
+			console.log(bcrypt.compareSync(req.body.password, user.password));
+			if (result) {
 				res.send({
 					_id: user._id,
 					name: user.name,

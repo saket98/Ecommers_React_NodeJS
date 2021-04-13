@@ -3,9 +3,13 @@ const mongoose = require("mongoose");
 const { products } = require("./data");
 const productRouter = require("./router/productRouter");
 const userRouter = require("./router/userRouter");
+const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
-require("dotenv").config();
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 mongoose
 	.connect(process.env.MONGO_URI, {
@@ -18,8 +22,6 @@ mongoose
 		console.log("mongodb connected.");
 	})
 	.catch((err) => console.log(err.message));
-
-
 
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
