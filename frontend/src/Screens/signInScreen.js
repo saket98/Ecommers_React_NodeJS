@@ -16,11 +16,11 @@ function SigninScreen() {
 					<h1>Sign In</h1>
 				</div>
 				<div>
-					<lable htmlFor="email">Email address</lable>āś
+					<lable htmlFor="email">Email address</lable>
 					<input type="email" id="email" placeholder="Enter email" required onChange={(e) => setEmail(e.target.value)}></input>
 				</div>
 				<div>
-					<lable htmlFor="password">Email address</lable>
+					<lable htmlFor="password">Password</lable>
 					<input type="password" id="password" placeholder="Enter password" required onChange={(e) => setPassword(e.target.value)}></input>
 				</div>
 				<div>
