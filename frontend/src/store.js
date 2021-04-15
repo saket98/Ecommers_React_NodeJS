@@ -5,6 +5,9 @@ import { cartReducer } from "./Reducer/cartReducers";
 import { userReducer } from "./Reducer/userReducer";
 
 const initialState = {
+	userSignin: {
+		userInfo: localStorage.getItem("UserInfo") ? JSON.parse(localStorage.getItem("UserInfo")) : null,
+	},
 	cart: {
 		cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : [],
 	},
@@ -13,7 +16,7 @@ const reducer = combineReducers({
 	productList: productListReducer,
 	productDetails: productDetailsReducer,
 	cart: cartReducer,
-	user: userReducer,
+	userSignin: userReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
