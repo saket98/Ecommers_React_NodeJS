@@ -28,7 +28,7 @@ userRouter.post(
 	asyncHandler(async (req, res) => {
 		const user = await User.findOne({ email: req.body.email });
 		if (user) {
-			console.log(bcrypt.compareSync(req.body.password, user.password));
+			const result = bcrypt.compareSync(req.body.password, user.password);
 			if (result) {
 				res.send({
 					_id: user._id,

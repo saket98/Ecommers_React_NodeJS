@@ -5,11 +5,16 @@ import HomeScreen from "./Screens/HomeScreen";
 import { Link } from "react-router-dom";
 import ProductScreen from "./Screens/ProductScreen";
 import { useSelector } from "react-redux";
-import SigninScreen from "./Screens/signInScreen"
+import SigninScreen from "./Screens/signInScreen";
 
 function App() {
 	const cart = useSelector((state) => state.cart);
 	const { cartItems } = cart;
+
+	const user = useSelector((state) => state.user);
+	const { userInfo } = user;
+	console.log(userInfo);
+
 	return (
 		<BrowserRouter>
 			<div className="grid-container">
@@ -24,7 +29,7 @@ function App() {
 							Cart
 							{cartItems.length > 0 && <span className="badge">{cartItems.length}</span>}
 						</Link>
-						<Link to="/signin">Sign In</Link>
+						{userInfo ? <Link to="#">{userInfo.data.name}</Link> : <Link to="/signin">Sign In</Link>}
 					</div>
 				</header>
 				<main>
