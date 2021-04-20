@@ -44,4 +44,25 @@ userRouter.post(
 	})
 );
 
+userRouter.post(
+	"/register",
+	asyncHandler(async (req, res) => {
+		const userCheck = await User.findOne({ email: req.body.email });
+		if (!userCheck) {
+			const user = new User({ email: req.body.email, name: req.body.name, password: bcrypt.hashSync(req.body.password, 8) });
+			const createdUser = await user.save();
+			res.send({
+				_id: createdUser._id,
+				name: createdUser.name,
+				email: createdUser.email,
+				isAdmin: createdUser.isAdmin,
+				token: generateToken(createdUser),
+			});
+
+		} else {
+			res.status(401).send({ message: "User already exist" });
+		}
+	})
+);
+
 module.exports = userRouter;
