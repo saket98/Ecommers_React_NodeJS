@@ -11,8 +11,9 @@ export default function ProductScreen(props) {
 	const productId = props.match.params.id;
 	const [qty, setQty] = useState(1);
 	const productDetails = useSelector((state) => state.productDetails);
+	console.log(productDetails);
 	const { loading, error, product } = productDetails;
-	console.log(product);
+
 
 	useEffect(() => {
 		dispatch(detailsproducts(productId));
@@ -44,10 +45,7 @@ export default function ProductScreen(props) {
 								</li>
 								<li>Pirce : ₹{product.product.price}</li>
 								<li>
-									<p>
-										Description : 
-										{product.product.description}
-									</p>
+									<p>Description :{product.product.description}</p>
 								</li>
 							</ul>
 						</div>

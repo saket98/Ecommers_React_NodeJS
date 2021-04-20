@@ -7,10 +7,12 @@ import MessageBox from "../Components/MessageBox";
 export default function CartScreen(props) {
 	const productId = props.match.params.id;
 	const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
+	
 	const cart = useSelector((state) => state.cart);
 	const { cartItems } = cart;
 	
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		if (productId) {
 			dispatch(addToCart(productId, qty));
@@ -18,7 +20,8 @@ export default function CartScreen(props) {
 	}, [dispatch, productId, qty]);
 
 	const removeFromCartHandler = (id) => {
-		dispatch(removeFromCart(id))
+		// delete action
+		dispatch(removeFromCart(id));
 	};
 
 	const checkoutHandler = () => {
