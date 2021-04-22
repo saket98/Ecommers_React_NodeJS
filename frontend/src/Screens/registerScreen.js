@@ -5,13 +5,13 @@ import { register } from "../Action/userAction";
 import LoadingBox from "../Components/LoadingBox";
 import MessageBox from "../Components/MessageBox";
 
-function RegisterScreen(props) {
+export default function RegisterScreen(props) {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [ConfirmedPassword, setConfirmedPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
 
-	const redirect = props.location.search ? props.location.search.split("?")[1] : "/";
+	const redirect = props.location.search ? props.location.search.split("=")[1] : "/";
 
 	const userRegister = useSelector((state) => state.userRegister);
 	const { userInfo, loading, error } = userRegister;
@@ -19,19 +19,18 @@ function RegisterScreen(props) {
 	const dispatch = useDispatch();
 	const submitHandler = (e) => {
 		e.preventDefault();
-		if (password !== ConfirmedPassword) {
-			alert("Password and Confirm Password is not matching");
+		if (password !== confirmPassword) {
+			alert("Password and confirm password are not match");
 		} else {
 			dispatch(register(name, email, password));
 		}
 	};
-
 	useEffect(() => {
 		if (userInfo) {
 			props.history.push(redirect);
+			console.log(props.location);
 		}
-	}, [props.history, redirect, userInfo]);
-
+	}, [props.history, props.location, redirect, userInfo]);
 	return (
 		<div>
 			<form className="form" onSubmit={submitHandler}>
@@ -41,23 +40,23 @@ function RegisterScreen(props) {
 				{loading && <LoadingBox></LoadingBox>}
 				{error && <MessageBox variant="danger">{error}</MessageBox>}
 				<div>
-					<lable htmlFor="name">Name</lable>
-					<input type="name" id="name" placeholder="Enter name" required onChange={(e) => setName(e.target.value)}></input>
+					<label htmlFor="name">Name</label>
+					<input type="text" id="name" placeholder="Enter name" required onChange={(e) => setName(e.target.value)}></input>
 				</div>
 				<div>
-					<lable htmlFor="email">Email address</lable>
+					<label htmlFor="email">Email address</label>
 					<input type="email" id="email" placeholder="Enter email" required onChange={(e) => setEmail(e.target.value)}></input>
 				</div>
 				<div>
-					<lable htmlFor="password">Password</lable>
+					<label htmlFor="password">Password</label>
 					<input type="password" id="password" placeholder="Enter password" required onChange={(e) => setPassword(e.target.value)}></input>
 				</div>
 				<div>
-					<lable htmlFor="confirmedPassword">Confirm Password</lable>
-					<input type="password" id="confirmedPassword" placeholder="Please renter password" required onChange={(e) => setConfirmedPassword(e.target.value)}></input>
+					<label htmlFor="confirmPassword">Confirm Password</label>
+					<input type="password" id="confirmPassword" placeholder="Enter confirm password" required onChange={(e) => setConfirmPassword(e.target.value)}></input>
 				</div>
 				<div>
-					<lable />
+					<label />
 					<button className="primary" type="submit">
 						Register
 					</button>
@@ -65,12 +64,10 @@ function RegisterScreen(props) {
 				<div>
 					<label />
 					<div>
-						Already have an account <Link to={`/signin?redirect=${redirect}`}>Sing-In</Link>
+						Already have an account? <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
 					</div>
 				</div>
 			</form>
 		</div>
 	);
 }
-
-export default RegisterScreen;
