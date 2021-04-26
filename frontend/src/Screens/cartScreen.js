@@ -5,6 +5,16 @@ import { addToCart, removeFromCart } from "../Action/CartAction";
 import MessageBox from "../Components/MessageBox";
 
 export default function CartScreen(props) {
+	const userSignin = useSelector((state) => state.userSignin);
+	console.log(userSignin);
+	const {userInfo} = userSignin;
+	console.log(userInfo);
+
+
+	if (!userInfo){
+		props.history.push('/signin')
+	}
+
 	const productId = props.match.params.id;
 	const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
 	const cart = useSelector((state) => state.cart);
